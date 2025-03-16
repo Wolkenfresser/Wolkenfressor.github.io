@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация СКФУ</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-r from-blue-900 via-blue-700 to-blue-300 p-6">
+    <div id="app" class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg">
+        <div class="text-center mb-4">
+            <img src="Logo_SCFU_1.png" alt="СКФУ" class="mx-auto w-24 h-24">
+        </div>
+        
+        <h2 class="text-2xl font-bold mb-4 text-center">Регистрация в СКФУ</h2>
+        
+        <form @submit.prevent="submitForm">
+            <div class="mb-3">
+                <label class="block text-sm font-medium">Фамилия</label>
+                <input v-model="surname" type="text" class="w-full p-2 border rounded">
+            </div>
+
+            <div class="mb-3">
+                <label class="block text-sm font-medium">Имя</label>
+                <input v-model="firstname" type="text" class="w-full p-2 border rounded">
+            </div>
+
+            <div class="mb-3">
+                <label class="block text-sm font-medium">Отчество</label>
+                <input v-model="patronymic" type="text" class="w-full p-2 border rounded">
+            </div>
+            
+            <div class="mb-3">
+                <label class="block text-sm font-medium">Email</label>
+                <input v-model="email" type="email" class="w-full p-2 border rounded">
+            </div>
+
+            <div class="mb-3">
+                <label class="block text-sm font-medium">Телефон</label>
+                <input v-model="phone" type="tel" class="w-full p-2 border rounded">
+            </div>
+
+            <div class="mb-3">
+                <label class="block text-sm font-medium">Роль в ВУЗе</label>
+                <select v-model="role" class="w-full p-2 border rounded">
+                    <option value="student">Студент - уже учусь</option>
+                    <option value="applicant">Абитуриент - планирую поступать</option>
+                    <option value="staff">Сотрудник - я здесь работаю</option>
+                </select>
+            </div>
+
+            <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded">
+                Отправить
+            </button>
+        </form>
+
+        <div v-if="successMessage" class="mt-4 text-green-600">
+            {{ successMessage }}
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
